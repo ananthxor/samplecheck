@@ -1,0 +1,1 @@
+export { scratchFormat } from './config'

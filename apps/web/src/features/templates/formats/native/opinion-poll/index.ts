@@ -1,0 +1,1 @@
+export { opinionPollFormat } from './config'

@@ -1,0 +1,1 @@
+export { instaHalfPageFormat } from './config'

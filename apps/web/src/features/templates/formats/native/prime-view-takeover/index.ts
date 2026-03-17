@@ -1,0 +1,1 @@
+export { primeViewTakeoverFormat } from './config'

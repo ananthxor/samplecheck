@@ -1,0 +1,1 @@
+export { giftboxFormat } from './config'

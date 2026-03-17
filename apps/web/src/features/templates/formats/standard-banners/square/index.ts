@@ -1,0 +1,1 @@
+export { squareFormat } from './config'

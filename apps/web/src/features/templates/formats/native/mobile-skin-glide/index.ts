@@ -1,0 +1,1 @@
+export { mobileSkinGlideFormat } from './config'

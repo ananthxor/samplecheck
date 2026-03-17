@@ -1,0 +1,1 @@
+export { fullscreenVideoWrapperFormat } from './config'

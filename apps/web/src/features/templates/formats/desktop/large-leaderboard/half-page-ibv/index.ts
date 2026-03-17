@@ -1,0 +1,1 @@
+export { halfPageIbvFormat } from './config'

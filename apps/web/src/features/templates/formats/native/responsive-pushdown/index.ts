@@ -1,0 +1,1 @@
+export { responsivePushdownFormat } from './config'

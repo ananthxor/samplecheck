@@ -1,0 +1,1 @@
+export { sliderVideoFormat } from './config'

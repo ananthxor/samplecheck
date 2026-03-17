@@ -1,0 +1,1 @@
+export { lampDragFormat } from './config'

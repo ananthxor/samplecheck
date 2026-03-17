@@ -1,0 +1,1 @@
+export { wrapperScratchToRevealFormat } from './config'

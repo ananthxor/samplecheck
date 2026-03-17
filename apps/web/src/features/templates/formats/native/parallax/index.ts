@@ -1,0 +1,1 @@
+export { parallaxFormat } from './config'

@@ -1,0 +1,1 @@
+export { videoWallSquareFormat } from './config'

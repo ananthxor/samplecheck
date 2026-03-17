@@ -1,0 +1,1 @@
+export { hotspotFormat } from './config'

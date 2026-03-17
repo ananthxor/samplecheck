@@ -1,0 +1,1 @@
+export { interstitialSidesPollFormat } from './config'

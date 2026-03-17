@@ -1,0 +1,1 @@
+export { glideGalleryFormat } from './config'

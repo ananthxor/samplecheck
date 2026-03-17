@@ -1,0 +1,1 @@
+export { imageSliderFormat } from './config'

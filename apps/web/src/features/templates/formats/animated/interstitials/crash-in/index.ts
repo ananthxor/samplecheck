@@ -1,0 +1,1 @@
+export { crashInFormat } from './config'

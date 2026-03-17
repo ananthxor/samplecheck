@@ -1,0 +1,1 @@
+export { lightboxExpandableSliderFormat } from './config'

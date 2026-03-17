@@ -1,0 +1,1 @@
+export { videoPlayerCustomDimensionFormat } from './config'

@@ -1,0 +1,1 @@
+export { skinCarouselInteractiveFormat } from './config'

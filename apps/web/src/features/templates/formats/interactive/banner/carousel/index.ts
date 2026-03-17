@@ -1,0 +1,1 @@
+export { carouselFormat } from './config'

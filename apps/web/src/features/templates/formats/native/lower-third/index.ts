@@ -1,0 +1,1 @@
+export { lowerThirdFormat } from './config'

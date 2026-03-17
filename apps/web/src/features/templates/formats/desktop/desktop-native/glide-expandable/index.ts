@@ -1,0 +1,1 @@
+export { glideExpandableFormat } from './config'

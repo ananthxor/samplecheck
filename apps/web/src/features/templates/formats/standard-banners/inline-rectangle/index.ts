@@ -1,0 +1,1 @@
+export { inlineRectangleFormat } from './config'

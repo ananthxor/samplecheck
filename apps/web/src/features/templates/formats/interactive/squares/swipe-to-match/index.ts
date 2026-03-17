@@ -1,0 +1,1 @@
+export { swipeToMatchFormat } from './config'

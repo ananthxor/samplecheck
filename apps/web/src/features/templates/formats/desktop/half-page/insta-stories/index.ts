@@ -1,0 +1,1 @@
+export { instaStoriesFormat } from './config'

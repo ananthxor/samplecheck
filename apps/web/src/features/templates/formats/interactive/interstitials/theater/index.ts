@@ -1,0 +1,1 @@
+export { theaterFormat } from './config'

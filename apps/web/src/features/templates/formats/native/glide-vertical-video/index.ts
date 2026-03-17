@@ -1,0 +1,1 @@
+export { glideVerticalVideoFormat } from './config'

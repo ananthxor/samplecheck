@@ -1,0 +1,1 @@
+export { miniscrollerInterscrollerWithoutVideoFormat } from './config'

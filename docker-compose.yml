@@ -1,0 +1,10 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: studio_scrolltoday_com:latest
+    container_name: studio-scrolltoday-com
+    ports:
+      - "${PORT}:${PORT}"        # Use port from .env file
+    restart: unless-stopped

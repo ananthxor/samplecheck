@@ -1,0 +1,1 @@
+export { beatFormat } from './config'

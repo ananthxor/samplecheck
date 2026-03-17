@@ -1,0 +1,1 @@
+export { musicPlayerFormat } from './config'

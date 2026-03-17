@@ -1,0 +1,1 @@
+export { videowallYoutubeFormat } from './config'

@@ -1,0 +1,1 @@
+export { videoSpotlightFormat } from './config'

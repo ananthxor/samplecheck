@@ -1,0 +1,1 @@
+export { inlineResponsiveBannerVideoFormat } from './config'

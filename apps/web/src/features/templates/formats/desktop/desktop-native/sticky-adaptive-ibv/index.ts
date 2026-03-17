@@ -1,0 +1,1 @@
+export { stickyAdaptiveIbvFormat } from './config'

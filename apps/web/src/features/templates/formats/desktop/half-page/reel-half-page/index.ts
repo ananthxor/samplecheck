@@ -1,0 +1,1 @@
+export { reelHalfPageFormat } from './config'

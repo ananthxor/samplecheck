@@ -1,0 +1,1 @@
+export { photoAlbumFormat } from './config'

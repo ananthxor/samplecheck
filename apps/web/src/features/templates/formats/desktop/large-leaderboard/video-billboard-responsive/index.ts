@@ -1,0 +1,1 @@
+export { videoBillboardResponsiveFormat } from './config'

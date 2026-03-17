@@ -1,0 +1,1 @@
+export { largeLeaderboardIbvFormat } from './config'

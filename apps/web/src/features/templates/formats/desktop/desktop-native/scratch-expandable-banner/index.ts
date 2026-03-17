@@ -1,0 +1,1 @@
+export { scratchExpandableBannerFormat } from './config'

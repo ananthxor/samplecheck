@@ -1,0 +1,1 @@
+export { carouselHalfpageFormat } from './config'

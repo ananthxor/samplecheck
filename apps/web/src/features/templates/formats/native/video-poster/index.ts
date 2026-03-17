@@ -1,0 +1,1 @@
+export { videoPosterFormat } from './config'

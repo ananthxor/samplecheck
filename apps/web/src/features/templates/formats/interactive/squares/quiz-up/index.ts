@@ -1,0 +1,1 @@
+export { quizUpFormat } from './config'

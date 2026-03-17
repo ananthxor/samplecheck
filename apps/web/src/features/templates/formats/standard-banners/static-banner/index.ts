@@ -1,0 +1,1 @@
+export { staticBannerFormat } from './config'

@@ -1,0 +1,1 @@
+export { fullWidthExpandableHeaderBannerFormat } from './config'

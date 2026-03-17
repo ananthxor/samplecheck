@@ -1,0 +1,1 @@
+export { fancyCarouselFormat } from './config'

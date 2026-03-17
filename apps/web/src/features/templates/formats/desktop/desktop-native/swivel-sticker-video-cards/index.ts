@@ -1,0 +1,1 @@
+export { swivelStickerVideoCardsFormat } from './config'

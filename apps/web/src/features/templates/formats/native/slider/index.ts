@@ -1,0 +1,1 @@
+export { sliderFormat } from './config'

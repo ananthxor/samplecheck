@@ -1,0 +1,1 @@
+export { videoTheaterFormat } from './config'

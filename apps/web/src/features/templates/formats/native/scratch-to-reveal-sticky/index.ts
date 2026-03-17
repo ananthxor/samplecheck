@@ -1,0 +1,1 @@
+export { scratchToRevealStickyFormat } from './config'

@@ -1,0 +1,1 @@
+export { exhibitionCarouselDesktopFormat } from './config'

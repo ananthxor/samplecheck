@@ -1,0 +1,1 @@
+export { videoFooterBannerFormat } from './config'

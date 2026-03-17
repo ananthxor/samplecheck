@@ -1,0 +1,1 @@
+export { interstitialPuzzleFormat } from './config'

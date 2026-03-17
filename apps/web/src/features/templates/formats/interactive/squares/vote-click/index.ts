@@ -1,0 +1,1 @@
+export { voteClickFormat } from './config'

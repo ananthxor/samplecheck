@@ -1,0 +1,1 @@
+export { crackToRevealFormat } from './config'

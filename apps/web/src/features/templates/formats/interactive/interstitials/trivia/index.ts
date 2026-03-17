@@ -1,0 +1,1 @@
+export { triviaFormat } from './config'

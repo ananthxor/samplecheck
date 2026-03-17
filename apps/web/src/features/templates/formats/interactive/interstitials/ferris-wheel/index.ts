@@ -1,0 +1,1 @@
+export { ferrisWheelFormat } from './config'

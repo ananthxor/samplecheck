@@ -1,0 +1,1 @@
+export { countDownFormat } from './config'

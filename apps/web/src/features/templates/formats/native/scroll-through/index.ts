@@ -1,0 +1,1 @@
+export { scrollThroughFormat } from './config'

@@ -1,0 +1,1 @@
+export { slideInVariantFormat } from './config'

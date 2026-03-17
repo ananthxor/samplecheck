@@ -1,0 +1,1 @@
+export { jumboHeaderFormat } from './config'

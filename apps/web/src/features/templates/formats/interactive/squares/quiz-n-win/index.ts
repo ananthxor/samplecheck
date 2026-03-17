@@ -1,0 +1,1 @@
+export { quizNWinFormat } from './config'

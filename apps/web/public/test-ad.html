@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ScrollToday — Ad Test Page</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 40px 24px;
+      color: #1a1a1a;
+    }
+    .container { max-width: 640px; margin: 0 auto; }
+    h1 { font-size: 1.25rem; font-weight: 600; margin: 0 0 24px; }
+    .info-box {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      font-size: 0.875rem;
+      line-height: 1.8;
+    }
+    .info-box strong { display: inline-block; min-width: 120px; color: #6b7280; }
+    code {
+      background: #f3f4f6;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.8rem;
+    }
+    .status { padding: 8px 12px; border-radius: 6px; font-size: 0.85rem; margin-top: 8px; }
+    .status.ok  { background: #dcfce7; color: #166534; }
+    .status.err { background: #fee2e2; color: #991b1b; }
+    .status.loading { background: #fef9c3; color: #854d0e; }
+    .ad-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 32px;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+    }
+    .instructions {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 0.8rem;
+      line-height: 1.7;
+      margin-bottom: 28px;
+      color: #1e40af;
+    }
+    .instructions ol { margin: 6px 0 0; padding-left: 18px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>ScrollToday — Ad Test Page</h1>
+
+    <div class="instructions">
+      <strong>Usage:</strong> Open this page with your creative ID in the URL:<br />
+      <code>test-ad.html?cid=YOUR-CREATIVE-UUID&amp;w=300&amp;h=250</code>
+      <ol>
+        <li>Create a creative in the editor and <strong>Save</strong> it</li>
+        <li>Add credits via <code>supabase/dev-add-credits.sql</code></li>
+        <li>Open this page with <code>?cid=&lt;creative_id&gt;</code></li>
+        <li>Check Analytics — impression events should appear within a few seconds</li>
+      </ol>
+    </div>
+
+    <div class="info-box">
+      <div><strong>Creative ID</strong> <span id="display-cid">—</span></div>
+      <div><strong>Dimensions</strong> <span id="display-dims">—</span></div>
+      <div><strong>Serve URL</strong> <code id="display-url">—</code></div>
+      <div id="status-wrap"></div>
+    </div>
+
+    <div class="ad-wrapper">
+      <div id="ad-slot"></div>
+    </div>
+  </div>
+
+  <script>
+    var SERVE_BASE = 'https://ltiqcyigqlytqeisfoeq.supabase.co/functions/v1';
+
+    var params = new URLSearchParams(window.location.search);
+    var cid    = params.get('cid');
+    var w      = params.get('w') || '300';
+    var h      = params.get('h') || '250';
+
+    function setStatus(msg, type) {
+      var el = document.getElementById('status-wrap');
+      el.innerHTML = '<div class="status ' + type + '">' + msg + '</div>';
+    }
+
+    if (!cid) {
+      document.getElementById('display-cid').textContent = 'missing';
+      setStatus(
+        'No creative ID supplied. Add ?cid=YOUR-CREATIVE-UUID to the URL.',
+        'err'
+      );
+    } else {
+      var serveUrl = SERVE_BASE + '/serve-ad?id=' + cid + '&w=' + w + '&h=' + h + '&cb=' + Date.now();
+
+      document.getElementById('display-cid').innerHTML  = '<code>' + cid + '</code>';
+      document.getElementById('display-dims').textContent = w + ' × ' + h + ' px';
+      document.getElementById('display-url').textContent  = serveUrl;
+
+      setStatus('Loading ad…', 'loading');
+
+      var slot  = document.getElementById('ad-slot');
+      slot.id   = 'st-ad-' + cid;
+      slot.style.width  = w + 'px';
+      slot.style.height = h + 'px';
+
+      var s    = document.createElement('script');
+      s.src    = serveUrl;
+      s.async  = true;
+
+      s.onload = function () {
+        setStatus('Ad script loaded — impression pixel fired ✓', 'ok');
+      };
+      s.onerror = function () {
+        setStatus(
+          'Script request failed. Check: (1) creative has rendered_html saved, ' +
+          '(2) advertiser has credit balance > 0, (3) creative ID is correct.',
+          'err'
+        );
+      };
+
+      slot.appendChild(s);
+    }
+  </script>
+</body>
+</html>

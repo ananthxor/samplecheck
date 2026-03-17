@@ -1,0 +1,1 @@
+export { pullUpFormat } from './config'

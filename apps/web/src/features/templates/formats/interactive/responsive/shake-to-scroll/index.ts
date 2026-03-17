@@ -1,0 +1,1 @@
+export { shakeToScrollFormat } from './config'

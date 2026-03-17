@@ -1,0 +1,1 @@
+export { timeSpotlightShowcaseFormat } from './config'

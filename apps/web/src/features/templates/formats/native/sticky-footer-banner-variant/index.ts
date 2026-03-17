@@ -1,0 +1,1 @@
+export { stickyFooterBannerVariantFormat } from './config'

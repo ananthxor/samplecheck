@@ -1,0 +1,1 @@
+export { staticGlideFormat } from './config'

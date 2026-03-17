@@ -1,0 +1,1 @@
+export { mobileVideoSkinGlideFormat } from './config'

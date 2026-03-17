@@ -1,0 +1,1 @@
+export { inceptionFormat } from './config'

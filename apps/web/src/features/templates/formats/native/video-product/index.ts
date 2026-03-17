@@ -1,0 +1,1 @@
+export { videoProductFormat } from './config'

@@ -1,0 +1,1 @@
+export { rouletteTableFormat } from './config'

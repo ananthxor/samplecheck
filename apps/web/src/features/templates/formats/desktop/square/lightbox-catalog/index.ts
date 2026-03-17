@@ -1,0 +1,1 @@
+export { lightboxCatalogFormat } from './config'

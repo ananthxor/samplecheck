@@ -1,0 +1,1 @@
+export { stickyExpandableStaticFormat } from './config'

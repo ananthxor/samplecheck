@@ -1,0 +1,1 @@
+export { multimediaReelFormat } from './config'

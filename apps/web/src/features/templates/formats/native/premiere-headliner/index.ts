@@ -1,0 +1,1 @@
+export { premiereHeadlinerFormat } from './config'

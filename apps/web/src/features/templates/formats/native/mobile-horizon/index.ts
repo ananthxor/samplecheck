@@ -1,0 +1,1 @@
+export { mobileHorizonFormat } from './config'

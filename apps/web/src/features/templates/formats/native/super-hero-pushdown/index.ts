@@ -1,0 +1,1 @@
+export { superHeroPushdownFormat } from './config'

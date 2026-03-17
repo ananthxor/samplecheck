@@ -1,0 +1,1 @@
+export { videoScratchFormat } from './config'

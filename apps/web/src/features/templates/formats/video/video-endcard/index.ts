@@ -1,0 +1,1 @@
+export { videoEndcardFormat } from './config'

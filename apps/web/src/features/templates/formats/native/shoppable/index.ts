@@ -1,0 +1,1 @@
+export { shoppableFormat } from './config'

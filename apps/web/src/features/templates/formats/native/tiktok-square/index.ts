@@ -1,0 +1,1 @@
+export { tiktokSquareFormat } from './config'

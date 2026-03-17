@@ -1,0 +1,1 @@
+export { inFeedFormat } from './config'

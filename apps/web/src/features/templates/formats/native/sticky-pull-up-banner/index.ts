@@ -1,0 +1,1 @@
+export { stickyPullUpBannerFormat } from './config'

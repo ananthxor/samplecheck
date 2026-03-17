@@ -1,0 +1,1 @@
+export { tailoredOverlayFormat } from './config'

@@ -1,0 +1,1 @@
+export { clickToPlayFormat } from './config'

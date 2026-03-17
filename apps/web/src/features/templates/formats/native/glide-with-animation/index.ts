@@ -1,0 +1,1 @@
+export { glideWithAnimationFormat } from './config'

@@ -1,0 +1,1 @@
+export { bannerShiftFormat } from './config'

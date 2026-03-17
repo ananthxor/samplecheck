@@ -1,0 +1,1 @@
+export { shakeToRevealFullscreenFormat } from './config'

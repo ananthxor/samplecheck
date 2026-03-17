@@ -1,0 +1,1 @@
+export { instaSquareFormat } from './config'

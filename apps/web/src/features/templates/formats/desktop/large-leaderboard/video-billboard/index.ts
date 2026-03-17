@@ -1,0 +1,1 @@
+export { videoBillboardFormat } from './config'

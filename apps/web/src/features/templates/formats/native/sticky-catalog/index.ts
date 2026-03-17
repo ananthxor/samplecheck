@@ -1,0 +1,1 @@
+export { stickyCatalogFormat } from './config'

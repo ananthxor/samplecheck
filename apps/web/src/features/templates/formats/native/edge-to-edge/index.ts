@@ -1,0 +1,1 @@
+export { edgeToEdgeFormat } from './config'

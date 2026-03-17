@@ -1,0 +1,1 @@
+export { lightboxExpandableFormat } from './config'

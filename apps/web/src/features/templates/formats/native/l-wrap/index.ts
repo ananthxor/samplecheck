@@ -1,0 +1,1 @@
+export { lWrapFormat } from './config'

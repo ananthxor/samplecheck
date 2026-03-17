@@ -1,0 +1,1 @@
+export { scratchToRevealStickyVideoFormat } from './config'

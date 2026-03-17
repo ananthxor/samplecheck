@@ -1,0 +1,1 @@
+export { popUpPollFormat } from './config'

@@ -1,0 +1,1 @@
+export { pixelBoardFormat } from './config'

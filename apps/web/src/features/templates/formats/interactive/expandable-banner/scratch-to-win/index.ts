@@ -1,0 +1,1 @@
+export { scratchToWinFormat } from './config'

@@ -1,0 +1,1 @@
+export { animatedTowerFormat } from './config'

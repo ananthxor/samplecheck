@@ -1,0 +1,1 @@
+export { accordionFormat } from './config'

@@ -1,0 +1,1 @@
+export { desktopPushdownSliderFormat } from './config'

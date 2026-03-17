@@ -1,0 +1,1 @@
+export { videoSpotlightStorefrontFormat } from './config'

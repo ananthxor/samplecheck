@@ -1,0 +1,1 @@
+export { imageVideoPageScrollerFormat } from './config'

@@ -1,0 +1,1 @@
+export { dragToRevealFormat } from './config'

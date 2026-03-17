@@ -1,0 +1,1 @@
+export { shutterFormat } from './config'

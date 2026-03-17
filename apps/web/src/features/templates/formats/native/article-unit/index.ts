@@ -1,0 +1,1 @@
+export { articleUnitFormat } from './config'

@@ -1,0 +1,1 @@
+export { bannerFormat } from './config'

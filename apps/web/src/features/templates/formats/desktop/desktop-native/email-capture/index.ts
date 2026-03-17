@@ -1,0 +1,1 @@
+export { emailCaptureFormat } from './config'

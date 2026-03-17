@@ -1,0 +1,1 @@
+export { continuousShakeFormat } from './config'

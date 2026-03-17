@@ -1,0 +1,1 @@
+export { videoImageInterscrollerFormat } from './config'

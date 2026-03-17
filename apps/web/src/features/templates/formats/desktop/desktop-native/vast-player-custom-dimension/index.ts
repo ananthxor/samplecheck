@@ -1,0 +1,1 @@
+export { vastPlayerCustomDimensionFormat } from './config'

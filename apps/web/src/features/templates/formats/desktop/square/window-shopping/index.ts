@@ -1,0 +1,1 @@
+export { windowShoppingFormat } from './config'

@@ -1,0 +1,1 @@
+export { exhibitionCarouselMobileFormat } from './config'

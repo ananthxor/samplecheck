@@ -1,0 +1,1 @@
+export { videoPlayerFormat } from './config'

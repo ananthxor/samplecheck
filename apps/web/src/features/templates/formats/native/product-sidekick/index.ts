@@ -1,0 +1,1 @@
+export { productSidekickFormat } from './config'

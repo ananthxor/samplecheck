@@ -1,0 +1,1 @@
+export { instaVideoSquareFormat } from './config'

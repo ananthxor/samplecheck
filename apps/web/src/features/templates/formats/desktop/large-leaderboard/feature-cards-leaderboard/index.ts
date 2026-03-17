@@ -1,0 +1,1 @@
+export { featureCardsLeaderboardFormat } from './config'

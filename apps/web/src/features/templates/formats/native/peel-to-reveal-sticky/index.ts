@@ -1,0 +1,1 @@
+export { peelToRevealStickyFormat } from './config'

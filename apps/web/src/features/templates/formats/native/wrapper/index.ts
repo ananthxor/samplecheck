@@ -1,0 +1,1 @@
+export { wrapperFormat } from './config'

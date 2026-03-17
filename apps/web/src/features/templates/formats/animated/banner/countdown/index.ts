@@ -1,0 +1,1 @@
+export { countdownFormat } from './config'

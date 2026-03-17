@@ -1,0 +1,1 @@
+export { imageInterscrollerWithOptionalVideoFormat } from './config'

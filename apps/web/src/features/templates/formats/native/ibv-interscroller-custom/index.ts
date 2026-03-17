@@ -1,0 +1,1 @@
+export { ibvInterscrollerCustomFormat } from './config'

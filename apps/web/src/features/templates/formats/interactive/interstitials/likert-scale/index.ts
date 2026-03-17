@@ -1,0 +1,1 @@
+export { likertScaleFormat } from './config'

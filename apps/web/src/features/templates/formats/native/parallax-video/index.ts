@@ -1,0 +1,1 @@
+export { parallaxVideoFormat } from './config'

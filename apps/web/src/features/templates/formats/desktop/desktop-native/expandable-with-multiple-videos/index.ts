@@ -1,0 +1,1 @@
+export { expandableWithMultipleVideosFormat } from './config'

@@ -1,0 +1,1 @@
+export { thunderFormat } from './config'

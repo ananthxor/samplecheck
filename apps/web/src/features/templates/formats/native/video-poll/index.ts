@@ -1,0 +1,1 @@
+export { videoPollFormat } from './config'

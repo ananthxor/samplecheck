@@ -1,0 +1,1 @@
+export { videoWrapperFormat } from './config'

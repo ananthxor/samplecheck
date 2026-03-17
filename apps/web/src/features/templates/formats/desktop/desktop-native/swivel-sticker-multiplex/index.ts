@@ -1,0 +1,1 @@
+export { swivelStickerMultiplexFormat } from './config'

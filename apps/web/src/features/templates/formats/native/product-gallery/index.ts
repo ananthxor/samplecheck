@@ -1,0 +1,1 @@
+export { productGalleryFormat } from './config'

@@ -1,0 +1,1 @@
+export { productCarouselWithRatingFormat } from './config'

@@ -1,0 +1,1 @@
+export { mobileSidetrailSkinFormat } from './config'

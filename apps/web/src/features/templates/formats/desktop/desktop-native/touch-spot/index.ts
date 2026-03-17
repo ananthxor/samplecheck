@@ -1,0 +1,1 @@
+export { touchSpotFormat } from './config'

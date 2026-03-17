@@ -1,0 +1,1 @@
+export { glueStickVariantFormat } from './config'

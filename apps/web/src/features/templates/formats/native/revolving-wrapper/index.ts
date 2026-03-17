@@ -1,0 +1,1 @@
+export { revolvingWrapperFormat } from './config'

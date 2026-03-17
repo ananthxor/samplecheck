@@ -1,0 +1,1 @@
+export { dataBoardFormat } from './config'

@@ -1,0 +1,1 @@
+export { anchorFormat } from './config'

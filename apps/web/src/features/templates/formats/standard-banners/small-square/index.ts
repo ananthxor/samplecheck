@@ -1,0 +1,1 @@
+export { smallSquareFormat } from './config'

@@ -1,0 +1,1 @@
+export { scratchToRevealFormat } from './config'

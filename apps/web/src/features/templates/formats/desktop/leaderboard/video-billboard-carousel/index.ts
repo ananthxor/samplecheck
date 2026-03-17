@@ -1,0 +1,1 @@
+export { videoBillboardCarouselFormat } from './config'

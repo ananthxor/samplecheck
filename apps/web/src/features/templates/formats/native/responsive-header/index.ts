@@ -1,0 +1,1 @@
+export { responsiveHeaderFormat } from './config'

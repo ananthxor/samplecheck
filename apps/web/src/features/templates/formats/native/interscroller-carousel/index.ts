@@ -1,0 +1,1 @@
+export { interscrollerCarouselFormat } from './config'

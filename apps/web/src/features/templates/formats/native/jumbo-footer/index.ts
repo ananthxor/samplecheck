@@ -1,0 +1,1 @@
+export { jumboFooterFormat } from './config'

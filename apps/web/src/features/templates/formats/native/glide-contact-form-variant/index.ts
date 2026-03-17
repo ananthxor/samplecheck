@@ -1,0 +1,1 @@
+export { glideContactFormVariantFormat } from './config'

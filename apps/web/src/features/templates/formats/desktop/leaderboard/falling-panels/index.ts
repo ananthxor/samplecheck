@@ -1,0 +1,1 @@
+export { fallingPanelsFormat } from './config'

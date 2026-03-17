@@ -1,0 +1,1 @@
+export { swivelStickerAnimatedClipFormat } from './config'

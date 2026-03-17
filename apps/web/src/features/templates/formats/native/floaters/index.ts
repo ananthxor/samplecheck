@@ -1,0 +1,1 @@
+export { floatersFormat } from './config'

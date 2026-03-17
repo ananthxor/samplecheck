@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ScrollToday — Embed Tag Tester</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 40px 24px;
+      color: #1a1a1a;
+    }
+    .container { max-width: 700px; margin: 0 auto; }
+    h1 { font-size: 1.25rem; font-weight: 600; margin: 0 0 6px; }
+    .subtitle { font-size: 0.85rem; color: #6b7280; margin: 0 0 28px; }
+
+    label { font-size: 0.85rem; font-weight: 500; display: block; margin-bottom: 6px; }
+    textarea {
+      width: 100%;
+      height: 80px;
+      font-family: monospace;
+      font-size: 0.8rem;
+      padding: 10px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background: #fff;
+      resize: vertical;
+      outline: none;
+    }
+    textarea:focus { border-color: #6366f1; box-shadow: 0 0 0 2px #e0e7ff; }
+
+    .row { display: flex; gap: 10px; margin-top: 12px; align-items: center; }
+    button {
+      padding: 9px 22px;
+      border-radius: 7px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-run  { background: #4f46e5; color: #fff; }
+    .btn-run:hover { background: #4338ca; }
+    .btn-clear { background: #fff; color: #374151; border: 1px solid #d1d5db; }
+    .btn-clear:hover { background: #f9fafb; }
+
+    .status {
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      flex: 1;
+    }
+    .status.idle    { background: #f3f4f6; color: #6b7280; }
+    .status.loading { background: #fef9c3; color: #854d0e; }
+    .status.ok      { background: #dcfce7; color: #166534; }
+    .status.err     { background: #fee2e2; color: #991b1b; }
+
+    .ad-stage {
+      margin-top: 28px;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 32px;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .ad-stage .placeholder {
+      color: #9ca3af;
+      font-size: 0.875rem;
+    }
+
+    .hint {
+      margin-top: 20px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 0.78rem;
+      color: #1e40af;
+      line-height: 1.7;
+    }
+    .hint strong { font-weight: 600; }
+    code {
+      background: #dbeafe;
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>ScrollToday — Embed Tag Tester</h1>
+    <p class="subtitle">Paste a <code>&lt;script&gt;</code> embed tag and click Run to render the ad.</p>
+
+    <label for="tag-input">Ad Embed Tag</label>
+    <textarea
+      id="tag-input"
+      spellcheck="false"
+      placeholder='<script src="https://...supabase.co/functions/v1/serve-ad?id=...&w=300&h=250&cb=%%CACHEBUSTER%%"></script>'
+    ></textarea>
+
+    <div class="row">
+      <button class="btn-run" onclick="runTag()">▶ Run</button>
+      <button class="btn-clear" onclick="clearStage()">Clear</button>
+      <div id="status" class="status idle">Waiting for tag…</div>
+    </div>
+
+    <div class="ad-stage" id="ad-stage">
+      <span class="placeholder">Ad will render here</span>
+    </div>
+
+    <div class="hint">
+      <strong>Requirements for the ad to render:</strong><br />
+      1. Creative must be <strong>published</strong> (status = active) — set it in the editor toolbar.<br />
+      2. Advertiser must have a <strong>credit balance &gt; 0</strong> — add credits in Settings or via SQL:<br />
+      <code>UPDATE advertisers SET credit_balance = 10000 WHERE id = 'your-id';</code><br />
+      3. <code>%%CACHEBUSTER%%</code> in the tag is replaced automatically by this tester.
+    </div>
+  </div>
+
+  <script>
+    function setStatus(msg, type) {
+      var el = document.getElementById('status');
+      el.textContent = msg;
+      el.className = 'status ' + type;
+    }
+
+    function clearStage() {
+      var stage = document.getElementById('ad-stage');
+      stage.innerHTML = '<span class="placeholder">Ad will render here</span>';
+      setStatus('Waiting for tag…', 'idle');
+    }
+
+    function runTag() {
+      var raw = document.getElementById('tag-input').value.trim();
+      if (!raw) { setStatus('Paste an embed tag first.', 'err'); return; }
+
+      // Replace GAM macros with test values
+      var tag = raw
+        .replace(/%%CACHEBUSTER%%/g, Date.now())
+        .replace(/%%CLICK_URL_UNESC%%/g, '')
+        .replace(/%%CLICK_URL_ESC%%/g, '');
+
+      var stage = document.getElementById('ad-stage');
+      stage.innerHTML = '';
+      setStatus('Loading ad…', 'loading');
+
+      // ── CDN tag: <div id="st-cdn-..."> + inline <script> ──────────────────
+      var isCdn = /id=["']st-cdn-/.test(tag);
+      if (isCdn) {
+        // Extract width/height from the wrapper div's style attribute
+        var wMatch = tag.match(/width:\s*(\d+)px/);
+        var hMatch = tag.match(/height:\s*(\d+)px/);
+        var w = wMatch ? wMatch[1] : '300';
+        var h = hMatch ? hMatch[1] : '250';
+
+        // Size the stage to fit the ad exactly
+        stage.style.minHeight = (parseInt(h) + 64) + 'px';
+
+        // Inject the CDN tag as raw HTML — the inline script self-executes
+        var wrapper = document.createElement('div');
+        wrapper.innerHTML = tag;
+        var inlineScript = wrapper.querySelector('script');
+        var container = wrapper.querySelector('div');
+
+        if (container) stage.appendChild(container);
+
+        // Re-execute the inline script (innerHTML doesn't run scripts)
+        if (inlineScript) {
+          var s = document.createElement('script');
+          s.textContent = inlineScript.textContent;
+          document.body.appendChild(s);
+          document.body.removeChild(s);
+        }
+
+        setStatus('Ad script loaded — impression pixel fired ✓', 'ok');
+        return;
+      }
+
+      // ── Legacy serve-ad tag: <script src="..."> ───────────────────────────
+      var srcMatch = tag.match(/src=["']([^"']+)["']/i);
+      if (!srcMatch) { setStatus('Could not find src="..." in the tag.', 'err'); return; }
+      var src = srcMatch[1];
+
+      var cidMatch = src.match(/[?&]id=([^&]+)/);
+      var wMatch2  = src.match(/[?&]w=([^&]+)/);
+      var hMatch2  = src.match(/[?&]h=([^&]+)/);
+      var cid = cidMatch ? cidMatch[1] : 'ad';
+      var w2  = wMatch2  ? wMatch2[1]  : '300';
+      var h2  = hMatch2  ? hMatch2[1]  : '250';
+
+      stage.style.minHeight = (parseInt(h2) + 64) + 'px';
+
+      var slot = document.createElement('div');
+      slot.id = 'st-ad-' + cid;
+      slot.style.width  = w2 + 'px';
+      slot.style.height = h2 + 'px';
+      stage.appendChild(slot);
+
+      var s2 = document.createElement('script');
+      s2.src   = src;
+      s2.async = true;
+      s2.onload  = function () { setStatus('Ad script loaded — impression pixel fired ✓', 'ok'); };
+      s2.onerror = function () {
+        setStatus('Script failed. Check: (1) creative is published, (2) advertiser has credits, (3) correct ID.', 'err');
+      };
+      slot.appendChild(s2);
+    }
+
+    // Allow Ctrl+Enter to run
+    document.getElementById('tag-input').addEventListener('keydown', function (e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') runTag();
+    });
+
+    // Auto-fill from URL param ?tag=...
+    var urlTag = new URLSearchParams(window.location.search).get('tag');
+    if (urlTag) {
+      document.getElementById('tag-input').value = decodeURIComponent(urlTag);
+    }
+  </script>
+</body>
+</html>

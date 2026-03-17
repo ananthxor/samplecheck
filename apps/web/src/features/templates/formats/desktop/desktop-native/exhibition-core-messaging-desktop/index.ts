@@ -1,0 +1,1 @@
+export { exhibitionCoreMessagingDesktopFormat } from './config'

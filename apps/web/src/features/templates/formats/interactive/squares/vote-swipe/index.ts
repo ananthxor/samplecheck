@@ -1,0 +1,1 @@
+export { voteSwipeFormat } from './config'

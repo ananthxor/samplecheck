@@ -1,0 +1,1 @@
+export { facebookPostAdFormat } from './config'

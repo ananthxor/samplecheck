@@ -1,0 +1,1 @@
+export { stickyExpandableVideoFormat } from './config'

@@ -1,0 +1,18 @@
+{
+  "name": "scrolltoday",
+  "private": true,
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  },
+  "scripts": {
+    "dev": "pnpm --filter @scrolltoday/web dev",
+    "build": "pnpm --filter @scrolltoday/web build",
+    "preview": "pnpm --filter @scrolltoday/web preview",
+    "typecheck": "pnpm -r typecheck",
+    "db:push": "npx supabase db push",
+    "db:types": "npx supabase gen types typescript --project-id $SUPABASE_PROJECT_REF --schema public > packages/shared/src/database.types.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

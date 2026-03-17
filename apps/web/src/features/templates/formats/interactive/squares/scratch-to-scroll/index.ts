@@ -1,0 +1,1 @@
+export { scratchToScrollFormat } from './config'

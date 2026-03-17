@@ -1,0 +1,1 @@
+export { swipeToInstallFormat } from './config'

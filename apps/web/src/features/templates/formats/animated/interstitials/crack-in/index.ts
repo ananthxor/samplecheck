@@ -1,0 +1,1 @@
+export { crackInFormat } from './config'

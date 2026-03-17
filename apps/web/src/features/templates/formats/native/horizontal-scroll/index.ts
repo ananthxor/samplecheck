@@ -1,0 +1,1 @@
+export { horizontalScrollFormat } from './config'

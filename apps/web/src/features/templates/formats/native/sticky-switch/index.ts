@@ -1,0 +1,1 @@
+export { stickySwitchFormat } from './config'

@@ -1,0 +1,1 @@
+export { transitionSliderFormat } from './config'

@@ -1,0 +1,1 @@
+export { videoWallLeaderboardFormat } from './config'

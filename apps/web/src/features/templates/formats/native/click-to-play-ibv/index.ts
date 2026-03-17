@@ -1,0 +1,1 @@
+export { clickToPlayIbvFormat } from './config'

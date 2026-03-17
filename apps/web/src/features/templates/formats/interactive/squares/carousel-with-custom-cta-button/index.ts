@@ -1,0 +1,1 @@
+export { carouselWithCustomCtaButtonFormat } from './config'

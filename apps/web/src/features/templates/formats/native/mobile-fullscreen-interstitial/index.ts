@@ -1,0 +1,1 @@
+export { mobileFullscreenInterstitialFormat } from './config'

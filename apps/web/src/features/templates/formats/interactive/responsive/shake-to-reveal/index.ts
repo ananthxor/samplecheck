@@ -1,0 +1,1 @@
+export { shakeToRevealFormat } from './config'

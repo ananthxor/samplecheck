@@ -1,0 +1,1 @@
+export { largeIbvDesktopFormat } from './config'

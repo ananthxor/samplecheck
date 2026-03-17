@@ -1,0 +1,1 @@
+export { multiFrameFormat } from './config'

@@ -1,0 +1,1 @@
+export { productShowcaseFormat } from './config'

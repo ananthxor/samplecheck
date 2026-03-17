@@ -1,0 +1,1 @@
+export { stickyCurtainRaiserFormat } from './config'

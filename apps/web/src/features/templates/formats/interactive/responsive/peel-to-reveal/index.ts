@@ -1,0 +1,1 @@
+export { peelToRevealFormat } from './config'

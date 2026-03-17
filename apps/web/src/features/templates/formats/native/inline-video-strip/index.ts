@@ -1,0 +1,1 @@
+export { inlineVideoStripFormat } from './config'

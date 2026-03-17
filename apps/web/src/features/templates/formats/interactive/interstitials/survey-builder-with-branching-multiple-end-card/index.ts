@@ -1,0 +1,1 @@
+export { surveyBuilderWithBranchingMultipleEndCardFormat } from './config'

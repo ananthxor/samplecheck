@@ -1,0 +1,1 @@
+export { mobileGlideCarouselFormat } from './config'

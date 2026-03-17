@@ -1,0 +1,1 @@
+export { videoShopperVariantFormat } from './config'

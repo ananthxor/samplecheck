@@ -1,0 +1,1 @@
+export { unfoldFormat } from './config'

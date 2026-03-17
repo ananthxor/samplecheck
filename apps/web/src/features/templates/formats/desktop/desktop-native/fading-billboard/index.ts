@@ -1,0 +1,1 @@
+export { fadingBillboardFormat } from './config'

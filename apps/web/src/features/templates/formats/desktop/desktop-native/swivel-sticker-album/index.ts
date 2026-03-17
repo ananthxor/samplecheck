@@ -1,0 +1,1 @@
+export { swivelStickerAlbumFormat } from './config'

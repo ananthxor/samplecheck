@@ -1,0 +1,1 @@
+export { spinCubeVariantFormat } from './config'

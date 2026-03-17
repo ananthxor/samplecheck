@@ -1,0 +1,1 @@
+export { transitionEffectVariantFormat } from './config'

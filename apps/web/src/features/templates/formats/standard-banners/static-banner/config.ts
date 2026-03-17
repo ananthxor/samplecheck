@@ -1,0 +1,88 @@
+import type { FormatDefinition } from '../../_shared/types'
+import { staticBannerRenderer } from './renderer'
+
+export const staticBannerFormat: FormatDefinition = {
+  type: 'static-banner',
+  name: 'Static Banner',
+  description: 'Classic display banner with headline, body, image, and CTA button',
+  category: 'standard',
+  fields: [
+    { id: 'headline', label: 'Headline', type: 'text', default: '', validation: { max: 100 } },
+    { id: 'bodyText', label: 'Body Text', type: 'textarea', default: '', validation: { max: 250 } },
+    { id: 'ctaText', label: 'CTA Text', type: 'text', default: 'Learn More', validation: { max: 30 } },
+    { id: 'imageUrl', label: 'Image', type: 'image', default: 'https://picsum.photos/seed/static-banner/300/250' },
+    { id: 'backgroundColor', label: 'Background Color', type: 'color', default: '#ffffff', tab: 'style' },
+    { id: 'textColor', label: 'Text Color', type: 'color', default: '#000000', tab: 'style' },
+    { id: 'ctaColor', label: 'CTA Button Color', type: 'color', default: '#2563eb', tab: 'style' },
+    { id: 'ctaUrl', label: 'Click-Through URL', type: 'url', default: '', tab: 'settings' },
+  ],
+  renderer: staticBannerRenderer,
+  templates: [
+    {
+      id: 'hero-banner',
+      name: 'Hero Banner',
+      description: 'Bold hero layout with prominent headline and call-to-action button.',
+      thumbnailUrl: '',
+      sizes: [
+        { width: 728, height: 90, label: '728x90' },
+        { width: 300, height: 250, label: '300x250' },
+        { width: 160, height: 600, label: '160x600' },
+      ],
+      defaultConfig: {
+        type: 'static-banner',
+        headline: 'Your Headline Here',
+        bodyText: 'Your message goes here. Add compelling copy to engage your audience.',
+        ctaText: 'Learn More',
+        ctaUrl: '',
+        backgroundColor: '#ffffff',
+        textColor: '#000000',
+        ctaColor: '#2563eb',
+        imageUrl: 'https://picsum.photos/seed/static-banner1/300/250',
+      },
+    },
+    {
+      id: 'product-spotlight',
+      name: 'Product Spotlight',
+      description: 'Clean product-focused layout with image prominence.',
+      thumbnailUrl: '',
+      sizes: [
+        { width: 300, height: 250, label: '300x250' },
+        { width: 336, height: 280, label: '336x280' },
+        { width: 970, height: 250, label: '970x250' },
+      ],
+      defaultConfig: {
+        type: 'static-banner',
+        headline: 'Featured Product',
+        bodyText: 'Discover our latest product with exclusive features designed just for you.',
+        ctaText: 'Shop Now',
+        ctaUrl: '',
+        backgroundColor: '#f8fafc',
+        textColor: '#1e293b',
+        ctaColor: '#2563eb',
+        imageUrl: 'https://picsum.photos/seed/static-banner2/300/250',
+      },
+    },
+    {
+      id: 'brand-awareness',
+      name: 'Brand Awareness',
+      description: 'Minimalist brand-forward design with logo placement and tagline.',
+      thumbnailUrl: '',
+      sizes: [
+        { width: 728, height: 90, label: '728x90' },
+        { width: 300, height: 250, label: '300x250' },
+        { width: 320, height: 50, label: '320x50' },
+      ],
+      defaultConfig: {
+        type: 'static-banner',
+        headline: 'Your Brand Name',
+        bodyText: 'Tagline that captures your brand essence in a few words.',
+        ctaText: 'Discover',
+        ctaUrl: '',
+        backgroundColor: '#0f172a',
+        textColor: '#ffffff',
+        ctaColor: '#3b82f6',
+        imageUrl: 'https://picsum.photos/seed/static-banner3/300/250',
+      },
+    },
+  ],
+}
