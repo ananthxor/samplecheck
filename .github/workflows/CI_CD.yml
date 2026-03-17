@@ -89,7 +89,7 @@ jobs:
             # force git to use correct ssh key
             export GIT_SSH_COMMAND="ssh -i ~/.ssh/st_creative_studio -o IdentitiesOnly=yes"
 
-            cd /home/ananth
+            cd /home/ananth/dummy
             PROJECT_DIR="st-creative-studio"
 
             if [ -d "$PROJECT_DIR/.git" ]; then
@@ -101,36 +101,19 @@ jobs:
             elif [ -d "$PROJECT_DIR" ]; then
               echo "Directory exists but not a git repo. Removing..."
               rm -rf $PROJECT_DIR
-              git clone git@github.com:scrolltoday/st-creative-studio.git $PROJECT_DIR
+              git clone git@github.com:ananthxor/samplecheck.git $PROJECT_DIR
               cd $PROJECT_DIR
             else
               echo "Cloning repository..."
-              git clone git@github.com:scrolltoday/st-creative-studio.git $PROJECT_DIR
+              git clone git@github.com:ananthxor/samplecheck.git $PROJECT_DIR
               cd $PROJECT_DIR
             fi
 
             echo "Injecting production environment variables..."
             # Note: Production secrets should be managed on the server or via GitHub Secrets
-            echo "VITE_SUPABASE_URL=${{ secrets.VITE_SUPABASE_URL }}" > .env
-            echo "VITE_SUPABASE_ANON_KEY=${{ secrets.VITE_SUPABASE_ANON_KEY }}" >> .env
-            echo "SUPABASE_SERVICE_ROLE_KEY=${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" >> .env
-            echo "SUPABASE_DB_PASSWORD=${{ secrets.SUPABASE_DB_PASSWORD }}" >> .env
-            echo "VITE_SERVE_BASE_URL=${{ secrets.VITE_SERVE_BASE_URL }}" >> .env
-            echo "VITE_CREATIVE_CDN_BASE=${{ secrets.VITE_CREATIVE_CDN_BASE }}" >> .env
-            echo "PORT=${{ secrets.PORT }}" >> .env
-            echo "VITE_PORT=${{ secrets.VITE_PORT }}" >> .env
+            echo "Vite = vire}" > .env
             
             # Also create .env.development if the Dockerfile specifically expects it
             cp .env .env.development
-
-            echo "Stopping containers..."
-            docker compose -p studio_scrolltoday_com down --remove-orphans
-            docker rm -f studio-scrolltoday-com 2>/dev/null || true
-
-            echo "Building and starting containers..."
-            docker compose -p studio_scrolltoday_com up -d --build
-
-            echo "Cleaning old images..."
-            docker image prune -f --filter "label=com.docker.compose.project=studio_scrolltoday_com"
 
             echo "Deployment successful"
