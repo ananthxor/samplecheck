@@ -70,24 +70,20 @@ jobs:
     steps:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_SSH_KEY }}
-          envs: SSH_PRIVATE_KEY
           script: |
             set -e
 
             echo "Preparing SSH..."
             mkdir -p ~/.ssh
-            echo "$SSH_PRIVATE_KEY" > ~/.ssh/st_creative_studio
             chmod 600 ~/.ssh/st_creative_studio
             ssh-keyscan github.com >> ~/.ssh/known_hosts
 
             # force git to use correct ssh key
-            export GIT_SSH_COMMAND="ssh -i ~/.ssh/st_creative_studio -o IdentitiesOnly=yes"
+            export GIT_SSH_COMMAND="ssh -i ~/.ssh/st_creative_studio_new -o IdentitiesOnly=yes"
 
             cd /home/ananth/dummy
             PROJECT_DIR="st-creative-studio"
